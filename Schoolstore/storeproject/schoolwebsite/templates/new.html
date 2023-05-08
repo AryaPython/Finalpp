@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="javascript.js"></script>
+   <script>
+            function random_function()
+            {
+                var a=document.getElementById("input").value;
+                if(a==="Science")
+                {
+                    var arr=["Computer Science","Biology","Maths-Biology"];
+                }
+                else if(a==="Commerce")
+                {
+                    var arr=["BBA","B.com","Bachelor of Enomics"];
+                }
+                else if(a==="Humanities")
+                {
+                    var arr=["Literature","History","Philosophy"]
+                }
+                var string="";
+
+                for(i=0;i<arr.length;i++)
+                {
+                    string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+                }
+                document.getElementById("output").innerHTML=string;
+            }
+</script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=number], select, textarea {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=password], select, textarea {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=date], select, textarea {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=email], select, textarea {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+}
+input[type=button] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+
+}
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 55%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;">FORM</h2>
+
+<div class="container">
+  <form method="post" action="home">
+      {% csrf_token %}
+  <div class="row">
+    <div class="col-25">
+      <label for="name">Name:</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="name" name="Name:" placeholder="Your name.." required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="date">DOB:</label>
+    </div>
+    <div class="col-75">
+      <input type="date" id="date" name="DOB" placeholder="Date of Birth.." required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="age">Age</label>
+    </div>
+    <div class="col-75">
+      <input type="number" id="age" name="Age" placeholder="Your Age.." required>
+    </div>
+  </div>
+    <div class="row">
+       <div class="col-25">
+      <label for="gender">Gender:</label>
+    </div>
+     <input type="radio" id="Gender" name="Gender" value="Gender">
+      <label for="gender">Male</label>
+      <input type="radio" id="gender" name="Gender" value="Gender">
+      <label for="gender">Female</label><br>
+      </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="phnumber">Phone number:</label>
+    </div>
+    <div class="col-75">
+      <input type="number" id="phnumber" name="Phone Number" placeholder="Your Number.." required>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="email">Email</label>
+    </div>
+    <div class="col-75">
+      <input type="email" id="email" name="Email" placeholder="Your mailid.." required>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="address">Address:</label>
+    </div>
+    <div class="col-75">
+      <textarea id="address" name="Address" placeholder="Your Address.." style="height:200px"></textarea>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="department">Department:</label>
+    </div>
+       <div class="col-75">
+     <select id="input" onchange="random_function()" required>
+            <option>select option</option>
+            <option>Science</option>
+            <option>Commerce</option>
+            <option>Humanities</option>
+        </select>
+           </div>
+        </div>
+           <div class="row">
+            <div class="col-25">
+             <label for="course">Course:</label>
+           </div>
+        <div class="col-75">
+            <select id="output" onchange="random_function1()" required></select>
+        </div>
+           </div>
+       <div class="row">
+          <div class="col-25">
+           <label for="purpose">Purpose:</label>
+          </div>
+      <div class="col-75">
+         <select id="Purpose" name="purpose" required>
+         <option value="Select">Select...</option>
+        <option value="For Enquiry">For Enquiry</option>
+        <option value="Place order">Place Order</option>
+        <option value="return">Return</option>
+      </select>
+    </div>
+  </div>
+        <br>
+     <div class="row">
+       <div class="col-25">
+      <label for=material>Materials:</label required>
+    </div>
+         <input type="checkbox" name="pens" value="Pen" >Pen</br>
+         <input type="checkbox" name="exampapes" value="Exampapers" >Exam Papers</br>
+         <input type="checkbox" name="Notebooks" value="Notebooks" >Note Books</br>
+     </div>
+    </div>
+  <div class="row">
+      <input type="submit" value="submit" >
+  </div>
+  </form>
+</div>
+</body>
+</html>
